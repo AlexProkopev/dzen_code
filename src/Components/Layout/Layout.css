@@ -1,0 +1,34 @@
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.layout-main {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-around;
+  height: 85px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar {
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  padding: 1rem;
+ 
+}
+
+.content {
+  flex-grow: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #fff;
+}

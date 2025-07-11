@@ -1,0 +1,40 @@
+.sidebar .nav-link {
+  color: #495057;
+  font-weight: 500;
+  padding-bottom: 0.25rem;
+  border-radius: 0;
+  margin-bottom: 0.25rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.sidebar .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: darkgreen;
+  transition: width 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+  color: #214d12;
+}
+
+.sidebar .nav-link:hover::after {
+  width: 100%;
+}
+
+.sidebar .nav-link.active {
+  color: darkgreen;
+}
+
+.sidebar .nav-link.active::after {
+  width: 100%;
+}
+
+.sidebar .nav {
+  align-items: center;
+}

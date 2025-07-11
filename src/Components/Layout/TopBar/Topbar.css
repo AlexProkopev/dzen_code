@@ -1,0 +1,42 @@
+.search-form input {
+  border-radius: 10px;
+  padding-left: 1rem;
+  width: 50%;
+}
+
+.topbar .date-time {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  align-items: flex-end;
+}
+
+.topbar .date {
+  display: block;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+.topbar .time {
+  align-items: center;
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.topbar .time svg {
+  margin-right: 4px;
+}
+
+.topbar .status {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: green;
+  white-space: nowrap;
+}
+
+.topbar .icon-date {
+  color: green;
+}
