@@ -1,14 +1,7 @@
-
-import OrdersList from '../../Components/OrderCard/OrdersList'
-
+import OrdersList from "../../Components/OrderCard/OrdersList";
 
 function Orders() {
-
- 
-    
-  return (
-   <OrdersList/>
-  )
+  return <OrdersList />;
 }
 
-export default Orders
+export default Orders;

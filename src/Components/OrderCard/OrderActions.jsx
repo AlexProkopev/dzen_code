@@ -1,9 +1,6 @@
 const OrderActions = ({ order, onToggle, onDelete }) => {
   return (
-    <section
-      className="order-card-actions d-flex align-items-center gap-2 flex-shrink-0"
-      
-    >
+    <section className="order-card-actions d-flex align-items-center gap-2 flex-shrink-0">
       <button
         className="btn btn-light btn-sm px-2 py-1"
         aria-label="Показать детали"

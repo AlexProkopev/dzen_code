@@ -7,20 +7,17 @@ import {
   selectProductsTotalPages,
   selectProductsTotal,
   selectProductsError,
+  selectProductTypes,
 } from "../../redux/products/product.selectors";
-import { fetchProduct } from "../../redux/products/product.fetch";
+import {
+  fetchProduct,
+  fetchProductTypes,
+} from "../../redux/products/product.fetch";
 import { clearState, setPage } from "../../redux/products/product.reducer";
 import ProductItem from "./ProductItem";
 import PaginationControls from "../PaginationControls/PaginationControls";
 import Loader from "../Loader/Loader";
 import TypeFilter from "../TypeFilter/TypeFilter";
-import "./ProductList.css";
-import {
-  filterProductsByType,
-  getTotalPages,
-  getUniqueTypes,
-  paginateProducts,
-} from "../../Pages/Products/ProductsServices";
 import Notiflix from "notiflix";
 
 const ProductsList = () => {
@@ -31,59 +28,57 @@ const ProductsList = () => {
   const page = useSelector(selectProductsPage);
   const totalPages = useSelector(selectProductsTotalPages);
   const totalCount = useSelector(selectProductsTotal);
+  const types = useSelector(selectProductTypes);
   const [typeFilter, setTypeFilter] = useState("");
 
   useEffect(() => {
-    if (!typeFilter) {
-      dispatch(fetchProduct({ page, limit: 10 }));
-    } else {
-      dispatch(fetchProduct({ page: 1, limit: 1000 }));
-      dispatch(setPage(1));
-    }
+    dispatch(fetchProductTypes());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchProduct({ page, limit: 10, type: typeFilter }));
   }, [dispatch, page, typeFilter]);
 
   useEffect(() => {
     return () => {
-      setTypeFilter("");
       dispatch(clearState());
+      setTypeFilter("");
     };
   }, [dispatch]);
 
-  const filteredProducts = filterProductsByType(products, typeFilter);
-  const uniqueTypes = getUniqueTypes(products);
-  const localTotalPages = getTotalPages(filteredProducts.length, 10);
-  const paginatedProducts = typeFilter
-    ? paginateProducts(filteredProducts, page, 10)
-    : products;
-
   if (isLoading) return <Loader />;
-   if (isError) return Notiflix.Notify.failure("Ошибка при загрузке продуктов, попробуйте позже");
-  if (!isLoading && filteredProducts.length === 0) {
+  if (isError) {
+    Notiflix.Notify.failure("Ошибка при загрузке продуктов, попробуйте позже");
+    return null;
+  }
+
+  if (!isLoading && products.length === 0) {
     return <div className="text-center">Нет продуктов</div>;
   }
 
   return (
     <section className="products-list container my-4">
-      <h4 >
-        Продукты / {typeFilter ? filteredProducts.length : totalCount}
-      </h4>
+      <h4>Продукты / {totalCount}</h4>
 
       <TypeFilter
         value={typeFilter}
-        onChange={setTypeFilter}
-        options={uniqueTypes}
+        onChange={(val) => {
+          setTypeFilter(val);
+          dispatch(setPage(1));
+        }}
+        options={types}
       />
 
-      <ul >
-        {paginatedProducts.map((product) => (
+      <ul>
+        {products.map((product) => (
           <ProductItem key={product._id} product={product} />
         ))}
       </ul>
 
-      {(typeFilter ? localTotalPages : totalPages) > 1 && (
+      {totalPages > 1 && (
         <PaginationControls
           page={page}
-          totalPages={typeFilter ? localTotalPages : totalPages}
+          totalPages={totalPages}
           onPageChange={(p) => dispatch(setPage(p))}
         />
       )}

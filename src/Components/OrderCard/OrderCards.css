@@ -1,5 +1,5 @@
 .list-group {
-    list-style: none;
+  list-style: none;
 }
 
 .order-card {
@@ -53,8 +53,8 @@
   min-width: 130px;
 }
 
-.order-card-meta .meta-title{
-    min-width: 100px;
+.order-card-meta .meta-title {
+  min-width: 100px;
 }
 
 .order-card-actions {
@@ -69,10 +69,9 @@
   height: 28px;
 }
 
-.order-card-table{
-    min-width: 800px;
+.order-card-table {
+  min-width: 800px;
 }
-
 
 .order-badge {
   padding: 2px 6px;
@@ -95,7 +94,6 @@
   background-color: #6c757d;
 }
 
-
 .order-details-wrapper {
   max-height: 0;
   overflow: hidden;
@@ -104,6 +102,6 @@
 }
 
 .order-details-wrapper.open {
-  max-height: 1000px; 
+  max-height: 1000px;
   opacity: 1;
 }

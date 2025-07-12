@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProduct, fetchProductById } from "./product.fetch";
+import {
+  fetchProduct,
+  fetchProductById,
+  fetchProductTypes,
+} from "./product.fetch";
 
 const initialState = {
   products: [],
   currentProduct: null,
+  types: [],
   page: 1,
   limit: 10,
   total: 0,
@@ -19,24 +24,28 @@ const productsReducers = createSlice({
     setPage(state, action) {
       state.page = action.payload;
     },
-    clearState(){
+    clearState() {
       return {
         ...initialState,
       };
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProduct.pending, (state) => {
       state.isLoading = true;
       state.isError = null;
     });
+
+    builder.addCase(fetchProductTypes.fulfilled, (state, { payload }) => {
+      state.types = payload;
+    });
     builder.addCase(fetchProduct.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.products = payload.data || [];
-      state.page = payload.page || state.page;
-      state.limit = payload.limit || state.limit;
-      state.total = payload.total || 0;
-      state.totalPages = payload.totalPages || 0;
+      state.products = payload.data;
+      state.page = payload.page;
+      state.limit = payload.limit;
+      state.total = payload.total;
+      state.totalPages = payload.totalPages;
     });
     builder.addCase(fetchProduct.rejected, (state, { payload }) => {
       state.isLoading = false;
@@ -57,5 +66,5 @@ const productsReducers = createSlice({
   },
 });
 
-export const { setPage,clearState } = productsReducers.actions;
+export const { setPage, clearState } = productsReducers.actions;
 export const productReducer = productsReducers.reducer;
