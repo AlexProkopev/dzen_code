@@ -1,0 +1,38 @@
+.counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #198754;
+  background-color: #e6f4ea;
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 0 8px rgba(25, 135, 84, 0.3);
+  user-select: none;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  min-width: 140px;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.counter.animate {
+  animation: pulse 0.5s ease forwards;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(25, 135, 84, 0.3);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 14px rgba(25, 135, 84, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(25, 135, 84, 0.3);
+  }
+}

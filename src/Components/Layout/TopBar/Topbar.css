@@ -1,3 +1,13 @@
+.logo {
+  position: relative;
+  left: 100px;
+}
+
+.search-form {
+  position: relative;
+  left: 300px;
+}
+
 .search-form input {
   border-radius: 10px;
   padding-left: 1rem;
@@ -6,7 +16,6 @@
 
 .topbar .date-time {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
   font-size: 0.9rem;
   line-height: 1.2;

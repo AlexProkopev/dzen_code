@@ -1,8 +1,9 @@
-import React from 'react'
+
+import ProductsList from '../../Components/ProductsList/ProductsList'
 
 function Products() {
   return (
-    <div>Products</div>
+    <ProductsList/>
   )
 }
 

@@ -1,0 +1,98 @@
+.delete-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.delete-modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+.delete-modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1001;
+}
+
+.delete-modal-content.show {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+ 
+.delete-modal-content.modern {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 460px;
+  width: 90%;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+.delete-modal-title {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.delete-modal-text {
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.delete-modal-title {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #007bff;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+
+.delete-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgba(73, 114, 87, 0.4);
+  gap: 12px;
+  margin-top: 24px;
+  padding: 10px 14px;
+  border-radius: 0 18px 18px 0; 
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-modern {
+  padding: 10px 18px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 500ms ease;
+}
+
+.btn-gray {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-gray:hover {
+  background-color: #53af72;
+  color: #fff;
+}
+
+.btn-red {
+  background-color: #332e2f;
+  color: #fff;
+}
+
+.btn-red:hover {
+  background-color: #61383c;
+}

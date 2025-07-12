@@ -1,8 +1,13 @@
-import React from 'react'
+
+import OrdersList from '../../Components/OrderCard/OrdersList'
+
 
 function Orders() {
+
+ 
+    
   return (
-    <div>Orders</div>
+   <OrdersList/>
   )
 }
 
