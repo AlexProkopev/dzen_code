@@ -83,6 +83,23 @@ npm run dev</code></pre>
 npm install
 npm start</code></pre>
 
+<h3>🚀 Запуск через Docker</h3>
+<pre><code># 1. Клонируй репозиторий
+git clone https://github.com/AlexProkopev/dzen-code.git
+cd dzen-code
+
+# 2. Собери Docker-образ
+docker build -t dzen-code-front .
+
+# 3. Запусти контейнер (React SPA на порту 3000)
+docker run -p 3000:80 dzen-code-front
+</code></pre>
+
+<p>⚠️ Приложение ожидает, что Backend доступен по адресу <code>http://localhost:8080</code><br>
+Убедись, что он запущен локально или используй Railway-версию (ниже по ссылке документация)</p>
+
+<a href="https://github.com/AlexProkopev/dzen_code_data">Перейти к репозиторию Backend</a>
+
 
   <h2>📌 Основной функционал</h2>
   <ul>
