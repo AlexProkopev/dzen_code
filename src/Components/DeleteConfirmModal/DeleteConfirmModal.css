@@ -26,15 +26,19 @@
   opacity: 1;
   transform: translate(-50%, -50%);
 }
- 
+
 .delete-modal-content.modern {
-  background-color: #fff;
-  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0px;
   padding: 24px;
   max-width: 460px;
   width: 90%;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
   font-family: "Segoe UI", Roboto, sans-serif;
+  color: #f1f5f9;
 }
 
 .delete-modal-title {
@@ -51,22 +55,25 @@
 .delete-modal-title {
   display: inline-block;
   font-size: 16px;
-  font-weight: 500;
-  color: #007bff;
+  font-weight: 600;
+  color: #f1f5f9;
   text-decoration: none;
   word-break: break-word;
+  letter-spacing: 0.01em;
 }
-
 
 .delete-modal-actions {
   display: flex;
   justify-content: flex-end;
-  background-color: rgba(73, 114, 87, 0.4);
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   gap: 12px;
   margin-top: 24px;
   padding: 10px 14px;
-  border-radius: 0 18px 18px 0; 
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-modern {
@@ -79,20 +86,37 @@
 }
 
 .btn-gray {
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #292929;
+  padding: 10px 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-gray:hover {
-  background-color: #53af72;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .btn-red {
-  background-color: #332e2f;
-  color: #fff;
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #292929;
+  padding: 10px 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-red:hover {
-  background-color: #61383c;
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ffffff;
+  border-color: rgba(239, 68, 68, 0.5);
 }

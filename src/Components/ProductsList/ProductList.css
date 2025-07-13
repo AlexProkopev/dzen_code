@@ -1,5 +1,10 @@
 
-
+.list-product-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
 
 .filter-section select {
   appearance: none;
@@ -31,11 +36,18 @@
 
 .product-item {
   display: flex;
-  gap: 20px;
-  padding: 16px 20px;
-  border-bottom: 1px solid #ddd;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
   background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   width: 100%;
+  font-size: 0.95rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.product-item:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .product-item__photo {

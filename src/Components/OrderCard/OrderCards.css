@@ -1,18 +1,28 @@
 .list-group {
   list-style: none;
-   margin-bottom: 50px;
-}
-
-.order-card {
-  font-size: 0.95rem;
-}
-
-.order-card-container {
+  margin-bottom: 50px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
-.shadow-card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.order-card {
+  font-size: 14px;
+  color: #e2e8f0;
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  padding: 16px 20px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.order-card:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
 .order-card-img {
@@ -24,10 +34,9 @@
 }
 
 .order-card-title {
-  white-space: normal;
-  word-break: break-word;
-  flex: 1 1 auto;
-  margin-bottom: 0.25rem;
+  font-size: 14px;
+  color: rgb(22, 22, 22);
+  margin-bottom: 0;
 }
 
 .order-card-badge {
@@ -50,6 +59,7 @@
 
 .order-card-meta p,
 .order-card-meta time {
+  color: rgb(22, 22, 22);
   margin-bottom: 0;
   min-width: 130px;
 }

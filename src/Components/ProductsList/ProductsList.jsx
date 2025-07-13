@@ -69,7 +69,7 @@ const ProductsList = () => {
         options={types}
       />
 
-      <ul>
+      <ul className="list-product-container">
         {products.map((product) => (
           <ProductItem key={product._id} product={product} />
         ))}

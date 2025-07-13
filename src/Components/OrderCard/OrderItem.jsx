@@ -28,7 +28,7 @@ const OrderCard = ({ order, isOpen, onToggle, onDelete, details }) => {
   const shouldShowDetails = isOpen && details && details._id === order._id;
 
   return (
-    <li className="shadow-card border  p-3 mb-2 ">
+    <li className="order-card">
       <div className="d-flex gap-3">
         <OrderHeader order={order} firstProduct={firstProduct} />
         <OrderMeta order={order} totalUAH={totalUAH} totalUSD={totalUSD} />
