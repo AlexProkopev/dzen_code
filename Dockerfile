@@ -1,4 +1,4 @@
-# 1 - Сборка приложения
+
 FROM node:18-alpine AS build
 
 WORKDIR /app
@@ -11,7 +11,6 @@ COPY . .
 
 RUN npm run build
 
-# 2 - Запуск через nginx
 FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
