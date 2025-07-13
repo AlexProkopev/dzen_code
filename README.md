@@ -1,70 +1,110 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<body>
 
-## Available Scripts
+  <h1>Orders & Products SPA</h1>
 
-In the project directory, you can run:
+  <p>
+    Полноценное одностраничное приложение для отображения и управления заказами и товарами.
+    Проект построен на современном fullstack-стеке с использованием модульного подхода и семантической верстки.
+    Интерфейс адаптивный и работает в реальном времени через WebSocket.
+  </p>
 
-### `npm start`
+  <h2>⚙️ Используемые технологии</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  <ul>
+    <li><strong>Frontend (client/):</strong>
+      <ul>
+        <li>React 18</li>
+        <li>Redux Toolkit (состояние заказов и товаров)</li>
+        <li>React Router</li>
+        <li>Bootstrap 5 (адаптивная вёрстка и стили)</li>
+        <li>Axios (HTTP-запросы к API)</li>
+        <li>Socket.IO Client (счётчик вкладок в реальном времени)</li>
+      </ul>
+    </li>
+    <li><strong>Backend (server/):</strong>
+      <ul>
+        <li>Node.js + Express</li>
+        <li>MongoDB + Mongoose (хранение заказов и товаров)</li>
+        <li>Socket.IO Server (реалтайм-соединения)</li>
+        <li>dotenv, cors, helmet</li>
+      </ul>
+    </li>
+  </ul>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  <h2>📁 Архитектура компонентов (src/components)</h2>
+  <ul>
+    <li><code>DeleteConfirmModal</code> — модальное окно подтверждения удаления</li>
+    <li><code>Layout</code> — каркас приложения с TopMenu и NavigationMenu</li>
+    <li><code>Loader</code> — индикатор локальной загрузки</li>
+    <li><code>OrderCard</code> — карточка заказа с выпадающим списком продуктов</li>
+    <li><code>PaginationControls</code> — управление страницами</li>
+    <li><code>ProductsList</code> — отображение всех продуктов с фильтрацией</li>
+    <li><code>TypeFilter</code> — фильтр по типу продукта</li>
+    <li><code>WebSocketCounter</code> — отображение количества активных вкладок</li>
+  </ul>
 
-### `npm test`
+  <h2>📚 Структура проекта</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <h3>Клиент (client/)</h3>
+  <ul>
+    <li><code>components/</code> — переиспользуемые UI-компоненты</li>
+    <li><code>pages/</code> — Страницы приложения</li>
+    <li><code>redux/</code> — состояния, асинхронные запросы и селекторы (orders/products)</li>
+    <li><code>App.jsx</code>, <code>index.js</code> — точка входа и маршрутизация</li>
+  </ul>
 
-### `npm run build`
+  <h3>Сервер (server/)</h3>
+  <ul>
+    <li><code>models/</code> — схемы MongoDB для заказов и товаров</li>
+    <li><code>controllers/</code> — логика обработки запросов</li>
+    <li><code>services/</code> — вспомогательные функции для контроллеров</li>
+    <li><code>routes/</code> — REST API endpoints</li>
+    <li><code>db.js</code> — подключение к MongoDB</li>
+    <li><code>server.js</code> — запуск сервера + socket.io</li>
+  </ul>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <p>
+    Сервер находится на хостинге railway.com. Его можно запустить отдельно для разработки, либо для превью просто по ссылке живой страницы.
+  </p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  <a href="https://github.com/AlexProkopev/dzen_code_data">Cылка на репозиторий с Back-End и документацией</a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  <h2>🚀 Как запустить</h2>
 
-### `npm run eject`
+  <h3>Backend</h3>
+  <pre><code>cd server
+npm install
+npm run dev</code></pre>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  <h3>Frontend</h3>
+  <pre><code>cd client
+npm install
+npm start</code></pre>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  <h2>📌 Основной функционал</h2>
+  <ul>
+    <li>Просмотр заказов с детализацией</li>
+    <li>Фильтрация и отображение продуктов</li>
+    <li>Удаление заказов с подтверждением</li>
+    <li>Пагинация заказов и продуктов</li>
+    <li>WebSocket-счётчик активных пользователей</li>
+    <li>Семантическая и адаптивная вёрстка</li>
+  </ul>
 
-## Learn More
+  <h2>🧩 Использование</h2>
+  <ul>
+    <li>Выбери вкладку "Orders" — отобразятся карточки заказов с их статусами и суммами</li>
+    <li>Клик по бургеру возле кнопки удалить, раскроет список товаров внутри</li>
+    <li>На вкладке "Products" можно фильтровать продукты по типу</li>
+    <li>Удаление заказа — кнопка с иконкой 🗑, открывает модалку</li>
+    <li>Наверху — счётчик вкладок по WebSocketb текущее дата и время</li>
+  </ul>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  <h2>👤 Автор</h2>
+  <p>Александр Прокопьев</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</body>
+</html>
