@@ -1,5 +1,4 @@
 import { useContext, useState, useEffect, useRef } from "react";
-
 import "./WebSocketCounter.css";
 import { ActiveTabsContext } from "./ActiveTabsContext";
 
