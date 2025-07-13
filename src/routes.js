@@ -1,11 +1,11 @@
+import { lazy } from "react";
 
-import Groups from "./Pages/Groups/Groups";
-import Orders from "./Pages/Orders/Orders";
-import Products from "./Pages/Products/Products";
-import Users from "./Pages/Users/Users";
-import Settings from "./Pages/Settings/Settings";
-import ProductDetails from "./Components/ProductsList/ProductDetails";
-
+const Groups = lazy(() => import("./Pages/Groups/Groups"));
+const Orders = lazy(() => import("./Pages/Orders/Orders"));
+const Products = lazy(() => import("./Pages/Products/Products"));
+const Users = lazy(() => import("./Pages/Users/Users"));
+const Settings = lazy(() => import("./Pages/Settings/Settings"));
+const ProductDetails = lazy(() => import("./Components/ProductDetails/ProductDetails"));
 
 
 export const HOME_PAGE = "/";
@@ -26,6 +26,4 @@ export const ROUTES_NAV = [
   { path: USERS_PAGE, element: <Users />, name: null },
   { path: SETTINGS_PAGE, element: <Settings />, name: null },
   { path: PRODUCTS_DETAILS_PAGE, element: <ProductDetails />, name: null },
-
-
 ];

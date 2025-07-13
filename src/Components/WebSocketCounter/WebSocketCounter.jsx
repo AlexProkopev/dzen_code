@@ -1,28 +1,19 @@
-import { useEffect, useState, useRef } from "react";
-import { io } from "socket.io-client";
+import { useContext, useState, useEffect, useRef } from "react";
+
 import "./WebSocketCounter.css";
-import { socketUrl } from "../../api";
+import { ActiveTabsContext } from "./ActiveTabsContext";
 
 const WebSocketCounter = () => {
-  const [activeTabs, setActiveTabs] = useState(0);
+  const activeTabs = useContext(ActiveTabsContext);
   const [animate, setAnimate] = useState(false);
-  const prevCount = useRef(0);
+  const prevCount = useRef(activeTabs);
 
   useEffect(() => {
-    const socket = io(socketUrl);
-
-    socket.on("activeConnections", (count) => {
-      if (count !== prevCount.current) {
-        setAnimate(true);
-        prevCount.current = count;
-        setActiveTabs(count);
-      }
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+    if (activeTabs !== prevCount.current) {
+      setAnimate(true);
+      prevCount.current = activeTabs;
+    }
+  }, [activeTabs]);
 
   useEffect(() => {
     if (animate) {

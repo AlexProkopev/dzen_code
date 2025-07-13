@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectOrders,
@@ -9,19 +9,25 @@ import {
   selectOrdersLoading,
   selectOrdersError,
 } from "../../redux/orders/order.selectors";
-
-import PaginationControls from "../PaginationControls/PaginationControls";
-import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import Loader from "../Loader/Loader";
+import OrderItem from "./OrderItem";
+import Notiflix from "notiflix";
+
 import {
   changeOrdersPage,
   loadOrderDetails,
-  loadOrders,
   removeOrder,
-  resetOrdersState,
+  useInitOrders,
+  useResetOrdersOnUnmount,
+  useAutoBackOnEmptyPage,
 } from "../../Pages/Orders/OrdersServices";
-import OrderItem from "./OrderItem";
-import Notiflix from "notiflix";
+
+const PaginationControls = lazy(() =>
+  import("../PaginationControls/PaginationControls")
+);
+const DeleteConfirmModal = lazy(() =>
+  import("../DeleteConfirmModal/DeleteConfirmModal")
+);
 
 const OrdersList = () => {
   const dispatch = useDispatch();
@@ -36,9 +42,9 @@ const OrdersList = () => {
   const [orderToDelete, setOrderToDelete] = useState(null);
   const [localTotalCount, setLocalTotalCount] = useState(totalCount);
 
-  useEffect(() => {
-    loadOrders(dispatch, page);
-  }, [dispatch, page]);
+  useInitOrders(dispatch, page, setOpenId);
+  useResetOrdersOnUnmount(dispatch, setOpenId, setOrderToDelete);
+  useAutoBackOnEmptyPage(orders, page, dispatch);
 
   useEffect(() => {
     setLocalTotalCount(totalCount);
@@ -53,14 +59,6 @@ const OrdersList = () => {
     }
   };
 
-  useEffect(() => {
-    return () => {
-      setOpenId(null);
-      setOrderToDelete(null);
-      resetOrdersState(dispatch);
-    };
-  }, [dispatch]);
-
   const handleDeleteClick = (order) => {
     setOrderToDelete(order);
   };
@@ -69,7 +67,7 @@ const OrdersList = () => {
     if (orderToDelete) {
       removeOrder(dispatch, orderToDelete._id);
       setOrderToDelete(null);
-      setLocalTotalCount((prevCount) => prevCount - 1);
+      setLocalTotalCount((prev) => prev - 1);
     }
   };
 
@@ -77,11 +75,6 @@ const OrdersList = () => {
     setOrderToDelete(null);
   };
 
-  useEffect(() => {
-    if (orders.length === 0 && page > 1) {
-      changeOrdersPage(dispatch, page - 1);
-    }
-  }, [orders.length, page, dispatch]);
 
   if (isLoading) return <Loader />;
   if (isError)
